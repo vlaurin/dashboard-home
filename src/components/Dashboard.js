@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DazzleDashboard from 'react-dazzle';
-import HelloWorld from './widgets/HelloWorld';
 import Container from './Container';
 import CardFrame from './frames/CardFrame';
+import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
 
@@ -13,9 +13,9 @@ class Dashboard extends Component {
 
         this.state = {
             widgets: {
-                HelloWorld: {
-                    type: HelloWorld,
-                    title: 'Test widget',
+                Clock: {
+                    type: Clock,
+                    title: 'Clock',
                 },
                 TflStopPointArrivals: {
                     type: TflStopPointArrivals,
@@ -44,7 +44,7 @@ class Dashboard extends Component {
                         columns: [
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'TflStopPointArrivals'}],
+                                widgets: [{key: 'Clock'}],
                             },
                             {
                                 className: 'col-md',
@@ -52,7 +52,7 @@ class Dashboard extends Component {
                             },
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'HelloWorld'}],
+                                widgets: [{key: 'TflStopPointArrivals'}],
                             },
                         ],
                     },

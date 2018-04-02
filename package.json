@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "fecha": "^2.3.3",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dazzle": "^1.2.7",
