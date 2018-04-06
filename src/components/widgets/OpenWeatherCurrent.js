@@ -50,7 +50,12 @@ class OpenWeatherCurrent extends React.Component {
                     });
                 }
             })
-            .catch(error => console.error(`Failed to retrieve current weather:`, error));
+            .catch(error => console.error(`Failed to retrieve current weather:`, error))
+            .finally(() => {
+                this.setState({
+                    loading: false,
+                });
+            });
     }
 
     render() {

@@ -57,11 +57,15 @@ class TflStopPointArrivals extends React.Component {
                     this.setState({
                         lastUpdate: new Date(),
                         arrivals,
-                        loading: false,
                     });
                 }
             })
-            .catch(error => console.error(`Failed to retrieve arrivals for stop ${stopPointId}:`, error));
+            .catch(error => console.error(`Failed to retrieve arrivals for stop ${stopPointId}:`, error))
+            .finally(() => {
+                this.setState({
+                    loading: false,
+                });
+            });
     }
 
     render() {
