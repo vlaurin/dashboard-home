@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import fecha from 'fecha';
 
 class TflStopPointArrivals extends React.Component {
 
@@ -54,6 +55,7 @@ class TflStopPointArrivals extends React.Component {
             .then(arrivals => {
                 if (arrivals) {
                     this.setState({
+                        lastUpdate: new Date(),
                         arrivals,
                         loading: false,
                     });
@@ -64,14 +66,19 @@ class TflStopPointArrivals extends React.Component {
 
     render() {
         return (
-            <ul className="list-group list-group-flush">
-                {this.state.arrivals.map((arrival, index) => (
-                    <li key={arrival.id} className="list-group-item" style={!index ? nextArrivalStyle : null}>
-                        <strong>{arrival.lineName}</strong>
-                        {formatTimeToStation(arrival)}
-                    </li>
-                ))}
-            </ul>
+            <Fragment>
+                <ul className="list-group list-group-flush">
+                    {this.state.arrivals.map((arrival, index) => (
+                        <li key={arrival.id} className="list-group-item" style={!index ? nextArrivalStyle : null}>
+                            <strong>{arrival.lineName}</strong>
+                            {formatTimeToStation(arrival)}
+                        </li>
+                    ))}
+                </ul>
+                <small className="text-center text-muted">
+                    Last updated: {this.state.lastUpdate ? fecha.format(this.state.lastUpdate, 'default') : 'Never'}
+                </small>
+            </Fragment>
         );
     }
 }
