@@ -46,7 +46,6 @@ class OpenWeatherCurrent extends React.Component {
                 if (weather) {
                     this.setState({
                         weather,
-                        loading: false,
                     });
                 }
             })
