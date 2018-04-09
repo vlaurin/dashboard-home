@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CardFrame = ({children, title}) => (
-    <div className="card bg-white text-dark border-primary">
-        <div className="card-header bg-primary text-light">
+const CardFrame = ({children, title, settings}) => (
+    <div className={`card bg-white text-dark ${settings.cardClass}`}>
+        <div className={`card-header ${settings.headerClass}`}>
             {title}
         </div>
         {children}

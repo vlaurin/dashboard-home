@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import DazzleDashboard from 'react-dazzle';
 import Container from './Container';
-import CardFrame from './frames/CardFrame';
+import SmashingFrame from './frames/SmashingFrame';
+import faBus from '@fortawesome/fontawesome-free-solid/faBus';
+import faClock from '@fortawesome/fontawesome-free-solid/faClock';
+import faSun from '@fortawesome/fontawesome-free-solid/faSun';
 import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
@@ -16,6 +19,10 @@ class Dashboard extends Component {
                 Clock: {
                     type: Clock,
                     title: 'Clock',
+                    frameSettings: {
+                        icon: faClock,
+                        colour: 'blue',
+                    },
                 },
                 TflStopPointArrivals: {
                     type: TflStopPointArrivals,
@@ -26,7 +33,11 @@ class Dashboard extends Component {
                             '131',
                             '152',
                         ],
-                    }
+                    },
+                    frameSettings: {
+                        icon: faBus,
+                        colour: 'red',
+                    },
                 },
                 OpenWeatherCurrent: {
                     type: OpenWeatherCurrent,
@@ -35,7 +46,11 @@ class Dashboard extends Component {
                         latitude: parseFloat(process.env.REACT_APP_OPEN_WEATHER_LAT),
                         longitude: parseFloat(process.env.REACT_APP_OPEN_WEATHER_LON),
                         apiKey: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
-                    }
+                    },
+                    frameSettings: {
+                        icon: faSun,
+                        colour: 'orange',
+                    },
                 },
             },
             layout: {
@@ -65,7 +80,7 @@ class Dashboard extends Component {
         return (
             <Container>
                 <DazzleDashboard
-                    frameComponent={CardFrame}
+                    frameComponent={SmashingFrame}
                     widgets={this.state.widgets}
                     layout={this.state.layout}
                 />

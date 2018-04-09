@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome-free-solid": "^5.0.9",
+    "@fortawesome/react-fontawesome": "^0.0.18",
     "bootstrap": "^4.0.0",
     "fecha": "^2.3.3",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dazzle": "^1.2.7",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.0",
+    "react-dazzle": "^1.4.0",
+    "react-dom": "^16.3.0"
   },
   "devDependencies": {
     "react-scripts": "1.1.1"
