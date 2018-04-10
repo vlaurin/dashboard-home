@@ -73,15 +73,19 @@ class TflStopPointArrivals extends React.Component {
             <Fragment>
                 <ul className="list-group list-group-flush">
                     {this.state.arrivals.map((arrival, index) => (
-                        <li key={arrival.id} className="list-group-item" style={!index ? nextArrivalStyle : null}>
+                        <li key={arrival.id}
+                            className="list-group-item"
+                            style={!index ? style.nextArrival : style.arrival}>
                             <strong>{arrival.lineName}</strong>
                             {formatTimeToStation(arrival)}
                         </li>
                     ))}
                 </ul>
-                <small className="text-center text-muted">
-                    Last updated: {this.state.lastUpdate ? fecha.format(this.state.lastUpdate, 'default') : 'Never'}
-                </small>
+                <div className="text-center">
+                    <small className="text-muted">
+                        Last updated: {this.state.lastUpdate ? fecha.format(this.state.lastUpdate, 'default') : 'Never'}
+                    </small>
+                </div>
             </Fragment>
         );
     }
@@ -100,10 +104,17 @@ TflStopPointArrivals.defaultProps = {
     limit: 3
 };
 
-const nextArrivalStyle = {
-    fontSize: '2rem',
-    fontWeight: '500',
-    lineHeight: '1.5',
+const style = {
+    arrival: {
+        fontSize: '1.5rem',
+        fontWeight: '400',
+        lineHeight: '1',
+    },
+    nextArrival: {
+        fontSize: '3rem',
+        fontWeight: '600',
+        lineHeight: '1.2',
+    },
 };
 
 const filterArrivals = lineIds => arrivals => arrivals.filter(arrival => !lineIds || lineIds.includes(arrival.lineId));
