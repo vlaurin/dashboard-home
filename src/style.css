@@ -17,7 +17,8 @@ body {
 /*
     Slightly dim muted text
  */
-.text-light .text-muted {
-    color: #eeeeee !important;
+.text-muted {
+    color: #ffffff !important;
     font-weight: normal;
+    opacity: 0.8;
 }
