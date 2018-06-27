@@ -5,9 +5,11 @@ import SmashingFrame from './frames/SmashingFrame';
 import faBus from '@fortawesome/fontawesome-free-solid/faBus';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faSun from '@fortawesome/fontawesome-free-solid/faSun';
+import faRecycle from '@fortawesome/fontawesome-free-solid/faRecycle';
 import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
+import KingstonRubbishCollectionCalendar from './widgets/KingstonRubbishCollectionCalendar';
 
 class Dashboard extends Component {
 
@@ -22,6 +24,14 @@ class Dashboard extends Component {
                     frameSettings: {
                         icon: faClock,
                         colour: 'blue',
+                    },
+                },
+                RubbishCollection: {
+                    type: KingstonRubbishCollectionCalendar,
+                    title: 'Rubbish collection',
+                    frameSettings: {
+                        icon: faRecycle,
+                        colour: 'green',
                     },
                 },
                 TflStopPointArrivals: {
@@ -59,7 +69,7 @@ class Dashboard extends Component {
                         columns: [
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'Clock'}],
+                                widgets: [{key: 'Clock'}, {key: 'RubbishCollection'}],
                             },
                             {
                                 className: 'col-md',
