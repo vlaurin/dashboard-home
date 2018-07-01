@@ -63,7 +63,7 @@ class KingstonRubbishCollectionCalendar extends React.Component {
             <div className="card-body text-center">
                 <div className="row align-items-center">
                     <div className="col">
-                        <h3 className="display-3">
+                        <h3 className="display-4">
                             {this.state.nextCollection.name}
                         </h3>
                     </div>
@@ -85,7 +85,7 @@ const getWeekNumber = date => {
     date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
     // Set to nearest Thursday: current date + 4 - current day number
     // Make Sunday's day number 7
-    let nextWeek = date.getUTCDay() >= 4;
+    let nextWeek = (date.getUTCDay()||7) >= 4;
     date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay()||7) + 3);
     if (nextWeek) {
         date.setUTCDate(date.getUTCDate() + 7);
