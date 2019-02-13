@@ -6,10 +6,12 @@ import faBus from '@fortawesome/fontawesome-free-solid/faBus';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faSun from '@fortawesome/fontawesome-free-solid/faSun';
 import faRecycle from '@fortawesome/fontawesome-free-solid/faRecycle';
+import faYoutube from '@fortawesome/fontawesome-free-brands/faYoutube';
 import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
 import KingstonRubbishCollectionCalendar from './widgets/KingstonRubbishCollectionCalendar';
+import YoutubeVS from './widgets/YoutubeVS';
 
 class Dashboard extends Component {
 
@@ -49,6 +51,25 @@ class Dashboard extends Component {
                         colour: 'red',
                     },
                 },
+                PewdsVsTSeries: {
+                    type: YoutubeVS,
+                    title: 'Pewds VS TSeries',
+                    props: {
+                        contender1: {
+                            channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
+                            displayName: 'Pewds'
+                        },
+                        contender2: {
+                            channelId: 'UCq-Fj5jknLsUf-MWSy4_brA',
+                            displayName: 'T-Series'
+                        },
+                        apiKey: process.env.REACT_APP_YOUTUBE_API_KEY,
+                    },
+                    frameSettings: {
+                        icon: faYoutube,
+                        colour: 'red',
+                    },
+                },
                 OpenWeatherCurrent: {
                     type: OpenWeatherCurrent,
                     title: 'Current weather',
@@ -73,7 +94,7 @@ class Dashboard extends Component {
                             },
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'OpenWeatherCurrent'}],
+                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'PewdsVsTSeries'}],
                             },
                             {
                                 className: 'col-md',
