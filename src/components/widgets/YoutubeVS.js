@@ -126,7 +126,7 @@ YoutubeVS.propTypes = {
 };
 
 YoutubeVS.defaultProps = {
-    refreshInterval: 10000,
+    refreshInterval: 30000,
 };
 
 const formatNumber = x => {
