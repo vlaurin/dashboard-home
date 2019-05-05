@@ -11,7 +11,7 @@ import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
 import KingstonRubbishCollectionCalendar from './widgets/KingstonRubbishCollectionCalendar';
-import YoutubeVS from './widgets/YoutubeVS';
+import YoutubeSubCountDown from './widgets/YoutubeSubCountDown';
 
 class Dashboard extends Component {
 
@@ -51,18 +51,14 @@ class Dashboard extends Component {
                         colour: 'red',
                     },
                 },
-                PewdsVsTSeries: {
-                    type: YoutubeVS,
-                    title: 'Pewds VS TSeries',
+                Pewds100M: {
+                    type: YoutubeSubCountDown,
+                    title: 'Pewds 100M countdown',
                     props: {
-                        contender1: {
-                            channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
-                            displayName: 'Pewds'
-                        },
-                        contender2: {
-                            channelId: 'UCq-Fj5jknLsUf-MWSy4_brA',
-                            displayName: 'T-Series'
-                        },
+                        channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
+                        displayName: 'Pewds',
+                        targetSubCount: 100000000,
+                        message: 'To 100M:',
                         apiKey: process.env.REACT_APP_YOUTUBE_API_KEY,
                     },
                     frameSettings: {
@@ -94,7 +90,7 @@ class Dashboard extends Component {
                             },
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'PewdsVsTSeries'}],
+                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'Pewds100M'}],
                             },
                             {
                                 className: 'col-md',
