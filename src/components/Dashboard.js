@@ -7,11 +7,14 @@ import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faSun from '@fortawesome/fontawesome-free-solid/faSun';
 import faRecycle from '@fortawesome/fontawesome-free-solid/faRecycle';
 import faYoutube from '@fortawesome/fontawesome-free-brands/faYoutube';
+import faHome from '@fortawesome/fontawesome-free-solid/faHome';
+import faTruck from '@fortawesome/fontawesome-free-solid/faTruck';
 import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
 import KingstonRubbishCollectionCalendar from './widgets/KingstonRubbishCollectionCalendar';
 import YoutubeSubCountDown from './widgets/YoutubeSubCountDown';
+import CountDownDays from './widgets/CountDownDays';
 
 class Dashboard extends Component {
 
@@ -79,6 +82,30 @@ class Dashboard extends Component {
                         colour: 'orange',
                     },
                 },
+                DaysToCompletion: {
+                  type: CountDownDays,
+                  title: 'Count down to completion',
+                  props: {
+                      title: 'Completion',
+                      until: new Date('2019-09-06'),
+                  },
+                  frameSettings: {
+                      icon: faHome,
+                      colour: 'purple',
+                  },
+                },
+                DaysToMove: {
+                  type: CountDownDays,
+                  title: 'Count down to move',
+                  props: {
+                      title: 'Move',
+                      until: new Date('2019-10-26'),
+                  },
+                  frameSettings: {
+                      icon: faTruck,
+                      colour: 'purple',
+                  },
+                },
             },
             layout: {
                 rows: [
@@ -86,11 +113,11 @@ class Dashboard extends Component {
                         columns: [
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'Clock'}, {key: 'RubbishCollection'}],
+                                widgets: [{key: 'Clock'}, {key: 'RubbishCollection'}, {key: 'DaysToCompletion'}],
                             },
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'Pewds100M'}],
+                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'Pewds100M'}, {key: 'DaysToMove'}],
                             },
                             {
                                 className: 'col-md',
