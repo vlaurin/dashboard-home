@@ -6,15 +6,10 @@ import faBus from '@fortawesome/fontawesome-free-solid/faBus';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faSun from '@fortawesome/fontawesome-free-solid/faSun';
 import faRecycle from '@fortawesome/fontawesome-free-solid/faRecycle';
-import faYoutube from '@fortawesome/fontawesome-free-brands/faYoutube';
-import faHome from '@fortawesome/fontawesome-free-solid/faHome';
-import faTruck from '@fortawesome/fontawesome-free-solid/faTruck';
 import Clock from './widgets/Clock';
 import TflStopPointArrivals from './widgets/TflStopPointArrivals';
 import OpenWeatherCurrent from './widgets/OpenWeatherCurrent';
 import KingstonRubbishCollectionCalendar from './widgets/KingstonRubbishCollectionCalendar';
-import YoutubeSubCountDown from './widgets/YoutubeSubCountDown';
-import CountDownDays from './widgets/CountDownDays';
 
 class Dashboard extends Component {
 
@@ -54,21 +49,6 @@ class Dashboard extends Component {
                         colour: 'red',
                     },
                 },
-                Pewds100M: {
-                    type: YoutubeSubCountDown,
-                    title: 'Pewds 100M countdown',
-                    props: {
-                        channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw',
-                        displayName: 'Pewds',
-                        targetSubCount: 100000000,
-                        message: 'To 100M:',
-                        apiKey: process.env.REACT_APP_YOUTUBE_API_KEY,
-                    },
-                    frameSettings: {
-                        icon: faYoutube,
-                        colour: 'red',
-                    },
-                },
                 OpenWeatherCurrent: {
                     type: OpenWeatherCurrent,
                     title: 'Current weather',
@@ -82,30 +62,6 @@ class Dashboard extends Component {
                         colour: 'orange',
                     },
                 },
-                DaysToCompletion: {
-                  type: CountDownDays,
-                  title: 'Count down to completion',
-                  props: {
-                      title: 'Completion',
-                      until: new Date('2019-09-06'),
-                  },
-                  frameSettings: {
-                      icon: faHome,
-                      colour: 'purple',
-                  },
-                },
-                DaysToMove: {
-                  type: CountDownDays,
-                  title: 'Count down to move',
-                  props: {
-                      title: 'Move',
-                      until: new Date('2019-10-26'),
-                  },
-                  frameSettings: {
-                      icon: faTruck,
-                      colour: 'purple',
-                  },
-                },
             },
             layout: {
                 rows: [
@@ -113,11 +69,11 @@ class Dashboard extends Component {
                         columns: [
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'Clock'}, {key: 'RubbishCollection'}, {key: 'DaysToCompletion'}],
+                                widgets: [{key: 'Clock'}, {key: 'RubbishCollection'}],
                             },
                             {
                                 className: 'col-md',
-                                widgets: [{key: 'OpenWeatherCurrent'}, {key: 'Pewds100M'}, {key: 'DaysToMove'}],
+                                widgets: [{key: 'OpenWeatherCurrent'}],
                             },
                             {
                                 className: 'col-md',
