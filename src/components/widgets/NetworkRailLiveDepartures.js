@@ -43,6 +43,12 @@ class NetworkRailLiveDepartures extends React.Component {
         this.setState(Object.assign({}, this.state, { loading: true }));
 
         fetch(`https://api.departureboard.io/api/v2.0/getDeparturesByCRS/${stationCrs}?apiKey=${apiKey}&numServices=${limit}`)
+            .then(res => {
+                // DEBUG
+                this.setState(Object.assign({}, this.state, {res, at: new Date()}));
+                console.log(res);
+                return res;
+            })
             .then(res => res.ok ? res : Promise.reject(res.statusText))
             .then(res => res.json())
             .then(departures => departures.trainServices)
@@ -58,6 +64,7 @@ class NetworkRailLiveDepartures extends React.Component {
                 console.error(`Failed to retrieve departues for station ${stationCrs}:`, error);
                 this.setState(Object.assign({}, this.state, {
                     loading: false,
+                    error: error,
                 }));
             });
     }
@@ -67,7 +74,7 @@ class NetworkRailLiveDepartures extends React.Component {
             <Fragment>
                 <ul className="list-group list-group-flush">
                     {this.state.services.map((service) => (
-                        <li key={service.serviceId}
+                        <li key={service.serviceID}
                             className="list-group-item"
                             style={style.departure}>
                             <span style={style.eta}>{eta(service)}</span>
@@ -77,7 +84,29 @@ class NetworkRailLiveDepartures extends React.Component {
                         </li>
                     ))}
                 </ul>
+                {this.renderDebug()}
             </Fragment>
+        );
+    }
+
+    renderDebug() {
+        return (
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Status</th>
+                        <td>{this.state.res ? this.state.res.status : ''}</td>
+                    </tr>
+                    <tr>
+                        <th>At</th>
+                        <td>{this.state.at ? this.state.at.toISOString() : ''}</td>
+                    </tr>
+                    <tr>
+                        <th>Last error</th>
+                        <td>{this.state.error}</td>
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 }
