@@ -51,7 +51,7 @@ class NetworkRailLiveDepartures extends React.Component {
             })
             .then(res => res.ok ? res : Promise.reject(res.statusText))
             .then(res => res.json())
-            .then(departures => departures.trainServices)
+            .then(departures => Array.isArray(departures.trainServices) ? departures.trainServices : [])
             .then(filterServices(platforms))
             .then(services => {
                 this.setState(Object.assign({}, this.state, {
