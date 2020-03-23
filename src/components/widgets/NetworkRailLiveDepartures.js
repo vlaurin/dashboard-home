@@ -64,7 +64,7 @@ class NetworkRailLiveDepartures extends React.Component {
                 console.error(`Failed to retrieve departues for station ${stationCrs}:`, error);
                 this.setState(Object.assign({}, this.state, {
                     loading: false,
-                    error: error,
+                    error: (error instanceof Error ? error.toString() : JSON.stringify(error)),
                 }));
             });
     }
